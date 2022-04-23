@@ -1,0 +1,101 @@
+<!--
+public string City { get; set; }
+-->
+
+<div *ngIf="isSigningUp()" class="card">
+    <div class="card-header text-center text-success"><h3>{{title}}</h3></div>
+    <div class="card-body">
+        <div id="login-row" class="row justify-content-center align-items-center border rounded-top">
+            <div id="login-column" class="col-md-12">
+              <div id="login-box">
+                <!--NIC-->
+                <div class="form-group">
+                    <label for="username" class="text-info"><br/>NIC:</label><br>
+                    <input [(ngModel)]="donor.nic" type="text" name="username" id="username" class="form-control ">
+                </div>
+
+                <!--FirstName-->
+                <div class="form-group">
+                    <label for="firstName" class="text-info"><br/>First Name:</label><br>
+                    <input [(ngModel)]="donor.firstName" type="text" name="firstName" id="firstName" class="form-control">
+                </div>
+
+                <!--LastName-->
+                <div class="form-group">
+                    <label for="firstName" class="text-info"><br/>Last Name:</label><br>
+                    <input [(ngModel)]="donor.lastName" type="text" name="lastName" id="lastName" class="form-control">
+                </div>
+
+                <!--DOB-->
+                <div class="form-group">
+                    <label class="text-info">Date of Birth:</label><br>
+                    <input type="text" class="form-control" aria-describedby="dob" placeholder="yyyy-mm-dd" [(ngModel)]="dob" ngbDatepicker #d="ngbDatepicker">
+                    <button class="btn btn-outline-secondary btn-sm" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
+                </div>
+
+                <!--Gender-->
+                <div class="form-group">
+                    <label for="gender" class="text-info"><br/>Gender:</label><br>
+                    <label><input type="radio" name="options" id="option1" value="Male" [(ngModel)]="donor.gender"> Male</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label><input type="radio" name="options" id="option2" value="Female" [(ngModel)]="donor.gender"> Female</label>
+                </div>
+
+                <!--Blood Group-->
+                <div class="form-group">
+                    <label for="bloodgroup" class="text-info"><br/>Blood Group:</label><br>
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg1" value="O+" [(ngModel)]="donor.bloodGroup"> O+&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg2" value="O-" [(ngModel)]="donor.bloodGroup"> O-&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg3" value="A+" [(ngModel)]="donor.bloodGroup"> A+&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg4" value="A-" [(ngModel)]="donor.bloodGroup"> A-&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg5" value="B+" [(ngModel)]="donor.bloodGroup"> B+&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg6" value="B-" [(ngModel)]="donor.bloodGroup"> B-&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg7" value="AB+" [(ngModel)]="donor.bloodGroup"> AB+&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg8" value="AB+" [(ngModel)]="donor.bloodGroup"> AB-&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label><input type="radio" name="bloodgroup" id="bg9" value="NN" [(ngModel)]="donor.bloodGroup" > Not Known</label>
+                </div>
+
+                <!--City-->
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <select class="form-control" id="city" [(ngModel)]="donor.city">
+                        <option value="">- Select -</option>
+                        <option *ngFor="let aCity of cities" value="{{aCity}}">{{aCity}}</option>
+                    </select>
+                  </div>
+
+                <!--Email-->
+                <div class="form-group">
+                    <label for="firstName" class="text-info"><br/>Email:</label><br>
+                    <input [(ngModel)]="donor.email" type="text" name="email" id="email" class="form-control">
+                </div>
+
+                <!--Phone-->
+                <div class="form-group">
+                    <label for="firstName" class="text-info"><br/>Mobile Phone:</label><br>
+                    <input [(ngModel)]="donor.phone" type="text" name="phone" id="phone" class="form-control">
+                </div>
+
+                <!--Password-->
+                <div class="form-group">
+                    <label for="password" class="text-info">Password:</label><br>
+                    <input [(ngModel)]="donor.password" type="password" name="password" id="password" class="form-control">
+                </div>
+
+                <!--Confirm Password-->
+                <div class="form-group">
+                    <label for="password" class="text-info">Confirm Password:</label><br>
+                    <input [(ngModel)]="confirmPassword" type="password" name="confirmPassword" id="password" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" name="signup" class="btn btn-primary btn-md" value="Sign Up" (click)="signUp()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" name="cancel" class="btn btn-danger btn-md" value="Cancel" (click)="cancel()">
+                </div>
+
+                <br/>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>  
