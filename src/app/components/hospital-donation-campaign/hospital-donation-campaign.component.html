@@ -1,3 +1,118 @@
-<p>
-  hospital-donation-campaign works!
-</p>
+<div class="card-header text-center text-success"><h3>{{title}}</h3></div>
+<div class="card-body">
+
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Create / Edit Campaign <i class="fa fa-caret-down"></i>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseOne" class="collapse collapsed" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body" style="margin: 20px;">
+
+        <!--accordion body-->
+        <div id="login-row" class="row justify-content-center align-items-center border rounded-top">
+          <div id="login-column" class="col-md-12">
+            <div id="login-box">
+    
+            <!--Campaign ID-->
+            <div class="form-group">
+                <label for="campaignID" class="text-info"><br/>Campaign ID:</label><br>
+                <input [(ngModel)]="campaign.campaignID" type="text" name="campaignID" id="campaignID" class="form-control" style="text-transform:uppercase">
+            </div>
+    
+            <!--Name-->
+            <div class="form-group">
+                <label for="name" class="text-info"><br/>Campaign Name:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
+                <input [(ngModel)]="campaign.campaignName" type="text" name="name" id="name" class="form-control">
+            </div>
+    
+            <!--Campaign Date-->
+            <div class="form-group">
+              <label class="text-info">Campaign Date:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
+              <input type="text" class="form-control" aria-describedby="dob" placeholder="yyyy-mm-dd" [(ngModel)]="campaign.campaignDate" ngbDatepicker #d="ngbDatepicker">
+              <button class="btn btn-outline-secondary btn-sm" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
+            </div>
+
+            <!--Time Slots-->
+            <div class="form-group">
+              <label for="name" class="text-info"><br/>Number of Time Slots:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
+              <input [(ngModel)]="campaign.timeSlots" type="number" name="slots" id="slots" class="form-control">
+          </div>
+    
+            <!--Blood Groups-->
+            <div class="form-group">
+                <label for="bloodGroups" class="text-info"><br/>Blood Groups:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
+                <div class="form-check form-check-inline badge badge-info">
+                  <input class="form-check-input" type="checkbox" value="all" id="all" (click)="selectAllbloodGroups()">
+                  <label class="form-check-label" for="all">All Blood Groups</label>
+                </div>
+                <div *ngFor="let bg of bloodGroups" class="form-check form-check-inline badge badge-danger">
+                  <input class="form-check-input" type="checkbox" value="{{bg.id}}" id="{{bg.id}}" [(ngModel)]="bg.selected">
+                  <label class="form-check-label" for="{{bg.id}}">{{bg.name}}</label>
+                </div>
+                <br><br>
+            </div>
+    
+            <!--City-->
+            <div class="form-group">
+                <label for="city" class="text-info">City:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
+                <select class="form-control" id="city" [(ngModel)]="campaign.city">
+                    <option value="">- Select -</option>
+                    <option *ngFor="let aCity of cities" value="{{aCity}}">{{aCity}}</option>
+                </select>
+              </div>
+    
+            <!--Location-->
+            <div class="form-group">
+              <label for="contactNo1" class="text-info"><br/>Location:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br><br>
+              <input [(ngModel)]="campaign.location" type="text" name="location" id="location" class="form-control">
+            </div>
+    
+            <!--Remarks-->
+            <div class="form-group">
+              <label for="contactNo2" class="text-info"><br/>Remarks:</label><br>
+              <input [(ngModel)]="campaign.remarks" type="text" name="remarks" id="remarks" class="form-control">
+            </div>
+    
+            <!--Status-->
+            <div class="form-group">
+              <label for="status" class="text-info"><br/>Gender:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
+              <label><input type="radio" name="options" id="option1" value="Draft" [(ngModel)]="campaign.status"> Draft</label>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <label><input type="radio" name="options" id="option2" value="Published" [(ngModel)]="campaign.status"> Published</label>
+            </div>
+    
+            <div class="form-group">
+                <input type="submit" name="save" class="btn btn-primary btn-md" value="Save Campaign" (click)="saveCampaign()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" name="cancel" class="btn btn-danger btn-md" value="Cancel" (click)="cancel()">
+            </div>
+    
+            <br/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Campaigns Calendar <i class="fa fa-caret-down"></i>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+
+        <!--accordion body-->
+        <label *ngFor="let camp of campaigns" class="badge badge-info">{{camp.campaignName}}</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

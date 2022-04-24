@@ -14,28 +14,17 @@ export class MasterDataService {
     return this.http.get(url);  
   }
 
-  getSites() {
-    let url : string = environment.apiBaseURL + "/Sites/GetSites";
-    return this.http.get(url);  
+  getBloodGroups(){
+    return [
+      {id:"O+", name: "O Positive", selected: false},
+      {id:"O-", name: "O Negative", selected: false},
+      {id:"A+", name: "A Positive", selected: false},
+      {id:"A-", name: "A Negative", selected: false},
+      {id:"B+", name: "B Positive", selected: false},
+      {id:"B-", name: "B Negative", selected: false},
+      {id:"AB+", name: "AB Positive", selected: false},
+      {id:"AB-", name: "AB Negative", selected: false}
+    ];
   }
 
-  getSite(id : number) {
-    let url : string = environment.apiBaseURL + "/Sites/" + id;
-    return this.http.get(url);  
-  }
-
-  getCategories(){
-    let url : string = environment.apiBaseURL + "/MaterialCategories";
-    return this.http.get(url); 
-  }
-
-  searchMaterialsByName(name : string){
-    let url : string = environment.apiBaseURL + "/Materials/SearchMaterialsByName/" + name;
-    return this.http.get(url); 
-  }
-
-  searchMaterialsByCategoryAndName(category : number, name : string){
-    let url : string = environment.apiBaseURL + "/Materials/SearchMaterialsByCategoryAndName/?category=" + category + "&name=" + name;
-    return this.http.get(url); 
-  }
 }

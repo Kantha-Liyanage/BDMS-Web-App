@@ -26,6 +26,6 @@ export class HospitalService {
       password : hospital.password
     }
 
-    return this.http.post(url, hospital);  
+    return this.http.post(url, json);  
   }
 }

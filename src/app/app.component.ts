@@ -35,13 +35,18 @@ export class AppComponent {
     return AuthService.username;
   }
 
+  getLoggedOnUserType(){
+    return AuthService.getUserType();
+  }
+
   signInDonor(){
     this.spinner.show();
     this.authService.signIn('Donor', this.username, this.password).subscribe(
       (res)=>{
-        this.authService.setLoggedOnUser('Donor', res["firstName"] + ' (' + res["nic"] + ')', res["token"]);
+        this.authService.setLoggedOnUser('Donor', res["nic"], res["firstName"], res["token"]);
         this.isLoggedIn = true;
         this.spinner.hide();
+        this.router.navigate(['/donor-update']);
       },
       (err)=>{
         this.spinner.hide();
@@ -54,10 +59,10 @@ export class AppComponent {
     this.spinner.show();
     this.authService.signIn('Hospital', this.username, this.password).subscribe(
       (res)=>{
-        this.authService.setLoggedOnUser('Hospital', res["name"] + ' (' + res["hospitalID"] + ')', res["token"]);
+        this.authService.setLoggedOnUser('Hospital', res["hospitalID"], res["name"], res["token"]);
         this.isLoggedIn = true;
         this.spinner.hide();
-        this.router.navigate(['/donor-update']);
+        this.router.navigate(['/campaigns']);
       },
       (err)=>{
         this.spinner.hide();

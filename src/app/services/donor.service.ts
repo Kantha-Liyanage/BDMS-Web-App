@@ -13,14 +13,12 @@ export class DonorService {
  
   constructor(private http: HttpClient) { }
 
-  getDonor(){
-    debugger;
-    let url = this.baseURL; 
+  getDonor(nic : string){
+    let url = this.baseURL + '?nic=' + nic; 
     return this.http.get(url);
   }
 
   register(donor: Donor) {
-    debugger;
     let url = this.baseURL; 
     let json = {
       nic : donor.nic,
@@ -39,7 +37,6 @@ export class DonorService {
   }
 
   updateProfile(donor: Donor){
-    debugger;
     let url = this.baseURL; 
     let json = {
       nic : donor.nic,
@@ -53,6 +50,6 @@ export class DonorService {
       phone : donor.phone,
     }
 
-    return this.http.put(url, json); 
+    return this.http.patch(url, json); 
   }
 }

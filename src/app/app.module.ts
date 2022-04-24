@@ -7,11 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
-import { NewPurchReqComponent } from './components/new-purch-req/new-purch-req.component';
 import { TokenInterceptor } from './interceptors/token-interceptor';
-import { MaterialPickerComponent } from './components/material-picker/material-picker.component';
-import { ApprovePurchReqComponent } from './components/approve-purch-req/approve-purch-req.component';
-import { ViewPurchReqComponent } from './components/view-purch-req/view-purch-req.component';
 import { DonorRegistrationComponent } from './components/donor-registration/donor-registration.component';
 import { HospitalRegistrationComponent } from './components/hospital-registration/hospital-registration.component';
 import { DonorProfileComponent } from './components/donor-profile/donor-profile.component';
@@ -23,10 +19,6 @@ import { DonationCampaignsCalendarComponent } from './components/donation-campai
     AppComponent,
     ModalDialogComponent,
     ModalDialogComponent,
-    NewPurchReqComponent,
-    MaterialPickerComponent,
-    ApprovePurchReqComponent,
-    ViewPurchReqComponent,
     DonorRegistrationComponent,
     HospitalRegistrationComponent,
     DonorProfileComponent,
@@ -46,9 +38,7 @@ import { DonationCampaignsCalendarComponent } from './components/donation-campai
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    ModalDialogComponent,
-    MaterialPickerComponent,
-    ViewPurchReqComponent
+    ModalDialogComponent
   ]
 })
 export class AppModule { }

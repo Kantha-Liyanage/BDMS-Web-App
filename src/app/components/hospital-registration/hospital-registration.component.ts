@@ -66,6 +66,7 @@ export class HospitalRegistrationComponent implements OnInit {
         debugger;
         this.spinner.hide();
         this.showModalDialog("Success","Hospital registration successful!");
+        this.router.navigate(['/campaigns']);
       },
       (err)=>{
         debugger;

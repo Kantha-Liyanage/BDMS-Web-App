@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ModalDialogComponent } from 'src/app/modal-dialog/modal-dialog.component';
 import { Donor } from 'src/app/models/donor';
+import { AuthService } from 'src/app/services/auth.service';
 import { DonorService } from 'src/app/services/donor.service';
 import { MasterDataService } from 'src/app/services/master.data.service';
 import { Utils } from 'src/app/utils/utils';
@@ -39,18 +40,34 @@ export class DonorProfileComponent implements OnInit {
       (res)=>{
         this.cities = res["data"];
         this.spinner.hide();
+
+        // get profile
+        this.getDonor();
       },
       (err)=>{
         debugger;
         this.spinner.hide();
       }
     );
+  }
 
-    // get profile
+  getDonor(){
     this.spinner.show(); 
-    this.donorService.getDonor().subscribe(
-      (res)=>{
+    let nic = AuthService.getUserID();
+    this.donorService.getDonor(nic).subscribe(
+      <Donor>(res)=>{
         debugger;
+        // assign
+        this.donor.nic = res.nic;
+        this.donor.firstName = res.firstName;
+        this.donor.lastName = res.lastName;
+        this.donor.city = res.city;
+        this.donor.dob = Utils.toAngularDate(Utils.toDisplayDate(res.dob));
+        this.donor.bloodGroup = res.bloodGroup;
+        this.donor.gender = res.gender;
+        this.donor.email = res.email;
+        this.donor.phone = res.phone;
+
         this.spinner.hide();
       },
       (err)=>{
@@ -58,7 +75,6 @@ export class DonorProfileComponent implements OnInit {
         this.spinner.hide();
       }
     );
-
   }
 
   updateProfile(){

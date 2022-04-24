@@ -19,6 +19,7 @@ export class DonorRegistrationComponent implements OnInit {
 
   title : string = "Blood Donation Management System - Donor Registration";
   cities : string[] = [];
+  bloodGroups : any[] = [];
 
   donor : Donor;
   confirmPassword : string = "";
@@ -38,6 +39,9 @@ export class DonorRegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
+    // blood groups
+    this.bloodGroups = this.masterDataService.getBloodGroups();
+
     // get cities
     this.spinner.show();
     this.masterDataService.getCities().subscribe(
