@@ -1,7 +1,3 @@
-<!--
-public string City { get; set; }
--->
-
 <div *ngIf="isSigningUp()" class="card">
     <div class="card-header text-center text-success"><h3>{{title}}</h3></div>
     <div class="card-body">
@@ -10,32 +6,32 @@ public string City { get; set; }
               <div id="login-box">
                 <!--NIC-->
                 <div class="form-group">
-                    <label for="username" class="text-info"><br/>NIC:</label><br>
+                    <label for="username" class="text-info"><br/>NIC:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
                     <input [(ngModel)]="donor.nic" type="text" name="username" id="username" class="form-control ">
                 </div>
 
                 <!--FirstName-->
                 <div class="form-group">
-                    <label for="firstName" class="text-info"><br/>First Name:</label><br>
+                    <label for="firstName" class="text-info"><br/>First Name:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
                     <input [(ngModel)]="donor.firstName" type="text" name="firstName" id="firstName" class="form-control">
                 </div>
 
                 <!--LastName-->
                 <div class="form-group">
-                    <label for="firstName" class="text-info"><br/>Last Name:</label><br>
+                    <label for="firstName" class="text-info"><br/>Last Name:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
                     <input [(ngModel)]="donor.lastName" type="text" name="lastName" id="lastName" class="form-control">
                 </div>
 
                 <!--DOB-->
                 <div class="form-group">
-                    <label class="text-info">Date of Birth:</label><br>
-                    <input type="text" class="form-control" aria-describedby="dob" placeholder="yyyy-mm-dd" [(ngModel)]="dob" ngbDatepicker #d="ngbDatepicker">
+                    <label class="text-info">Date of Birth:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
+                    <input type="text" class="form-control" aria-describedby="dob" placeholder="yyyy-mm-dd" [minDate]="minDOB" [maxDate]="maxDOB" [(ngModel)]="donor.dob" ngbDatepicker #d="ngbDatepicker">
                     <button class="btn btn-outline-secondary btn-sm" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
                 </div>
 
                 <!--Gender-->
                 <div class="form-group">
-                    <label for="gender" class="text-info"><br/>Gender:</label><br>
+                    <label for="gender" class="text-info"><br/>Gender:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
                     <label><input type="radio" name="options" id="option1" value="Male" [(ngModel)]="donor.gender"> Male</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <label><input type="radio" name="options" id="option2" value="Female" [(ngModel)]="donor.gender"> Female</label>
@@ -44,14 +40,14 @@ public string City { get; set; }
                 <!--Blood Group-->
                 <div class="form-group">
                     <label for="bloodgroup" class="text-info"><br/>Blood Group:</label><br>
-                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg1" value="O+" [(ngModel)]="donor.bloodGroup"> O+&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg2" value="O-" [(ngModel)]="donor.bloodGroup"> O-&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg3" value="A+" [(ngModel)]="donor.bloodGroup"> A+&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg4" value="A-" [(ngModel)]="donor.bloodGroup"> A-&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg5" value="B+" [(ngModel)]="donor.bloodGroup"> B+&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg6" value="B-" [(ngModel)]="donor.bloodGroup"> B-&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg7" value="AB+" [(ngModel)]="donor.bloodGroup"> AB+&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg8" value="AB+" [(ngModel)]="donor.bloodGroup"> AB-&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg1" value="O+" [(ngModel)]="donor.bloodGroup"> O Positive</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg2" value="O-" [(ngModel)]="donor.bloodGroup"> O Negative</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg3" value="A+" [(ngModel)]="donor.bloodGroup"> A Positive</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg4" value="A-" [(ngModel)]="donor.bloodGroup"> A Negative</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg5" value="B+" [(ngModel)]="donor.bloodGroup"> B Positive</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg6" value="B-" [(ngModel)]="donor.bloodGroup"> B Negative</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg7" value="AB+" [(ngModel)]="donor.bloodGroup"> AB Positive</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="badge badge-danger"><input type="radio" name="bloodgroup" id="bg8" value="AB+" [(ngModel)]="donor.bloodGroup"> AB Negative</label>&nbsp;&nbsp;&nbsp;&nbsp;
                     <label><input type="radio" name="bloodgroup" id="bg9" value="NN" [(ngModel)]="donor.bloodGroup" > Not Known</label>
                 </div>
 
@@ -78,13 +74,13 @@ public string City { get; set; }
 
                 <!--Password-->
                 <div class="form-group">
-                    <label for="password" class="text-info">Password:</label><br>
+                    <label for="password" class="text-info">Password:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
                     <input [(ngModel)]="donor.password" type="password" name="password" id="password" class="form-control">
                 </div>
 
                 <!--Confirm Password-->
                 <div class="form-group">
-                    <label for="password" class="text-info">Confirm Password:</label><br>
+                    <label for="password" class="text-info">Confirm Password:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
                     <input [(ngModel)]="confirmPassword" type="password" name="confirmPassword" id="password" class="form-control">
                 </div>
 

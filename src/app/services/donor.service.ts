@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Donor } from '../models/donor';
+import { Utils } from '../utils/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,25 @@ import { Donor } from '../models/donor';
 export class DonorService {
 
   baseURL : string = environment.apiBaseURL + "/Donor";
-  public static accessToken : string;
-  public static username : string;
-  public static userType : string;
-
+ 
   constructor(private http: HttpClient) { }
 
   register(donor: Donor) {
+    debugger;
     let url = this.baseURL; 
-    return this.http.post(url, donor);  
+    let json = {
+      nic : donor.nic,
+      password: donor.password,
+      firstName : donor.firstName,
+      lastName : donor.lastName,
+      dob : Utils.toDotNetDate(donor.dob),
+      gender : donor.gender,
+      bloodGroup : donor.bloodGroup,
+      city : donor.city,
+      email : donor.email,
+      phone : donor.phone,
+    }
+
+    return this.http.post(url, json);  
   }
 }
