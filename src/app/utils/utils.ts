@@ -16,6 +16,14 @@ export class Utils{
         return Utils.toAngularDate(date.getFullYear() + "-" + Utils.to2Digits(date.getMonth()) + "-" + Utils.to2Digits(date.getDay()));
     }
 
+    public static toDate(date : any) : Date{
+        let d = new Date();
+        d.setFullYear(date["year"]);
+        d.setMonth(date["month"]);
+        d.setDate(date["day"]);
+        return d;
+    }
+
     private static to2Digits(val : any) : string{
         if(val<10){
             return '0' + val;

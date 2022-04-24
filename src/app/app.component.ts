@@ -68,6 +68,11 @@ export class AppComponent {
     this.router.navigate(['/donor-signup']); 
   }
 
+  signUpHospital(){
+    this.authService.setSigningUp(true);
+    this.router.navigate(['/hospital-signup']); 
+  }
+
   isSigningUp(){
     return this.authService.isSigningUp();
   }

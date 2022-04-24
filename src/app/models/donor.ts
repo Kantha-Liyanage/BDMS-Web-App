@@ -1,4 +1,3 @@
-import { Console } from "console";
 import { Utils } from "../utils/utils";
 
 export class Donor{
@@ -24,8 +23,9 @@ export class Donor{
         debugger;
         var startDate = this.getMinDOB();
         var endDate = this.getMaxDOB();
+        var date = Utils.toDate(this.dob);
 
-        if (startDate <= this.dob && this.dob <= endDate) {
+        if (startDate <= date && date <= endDate) {
             return true;
         }
         else    {
@@ -36,14 +36,12 @@ export class Donor{
     getMinDOB() : Date{
         var date = new Date();
         date.setFullYear(date.getFullYear() - 60);
-        console.log(date);
         return date;
     }
 
     getMaxDOB() : Date{
         var date = new Date();
         date.setFullYear(date.getFullYear() - 18);
-        console.log(date);
         return date;
     }
 }

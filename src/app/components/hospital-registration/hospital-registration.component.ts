@@ -1,40 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { MasterDataService } from 'src/app/services/master.data.service';
-import { Donor } from 'src/app/models/donor';
 import { Router } from '@angular/router';
-import { DonorService } from 'src/app/services/donor.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDialogComponent } from 'src/app/modal-dialog/modal-dialog.component';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Utils } from 'src/app/utils/utils';
-
+import { Hospital } from 'src/app/models/hospital';
+import { AuthService } from 'src/app/services/auth.service';
+import { HospitalService } from 'src/app/services/hospital.service';
+import { MasterDataService } from 'src/app/services/master.data.service';
 
 @Component({
-  selector: 'app-donor-registration',
-  templateUrl: './donor-registration.component.html',
-  styleUrls: ['./donor-registration.component.css']
+  selector: 'app-hospital-registration',
+  templateUrl: './hospital-registration.component.html',
+  styleUrls: ['./hospital-registration.component.css']
 })
-export class DonorRegistrationComponent implements OnInit {
+export class HospitalRegistrationComponent implements OnInit {
 
-  title : string = "Blood Donation Management System - Donor Registration";
+  title : string = "Blood Donation Management System - Hospital Registration";
   cities : string[] = [];
 
-  donor : Donor;
+  hospital : Hospital;
   confirmPassword : string = "";
-  minDOB : string;
-  maxDOB : string;
 
   constructor(private authService : AuthService,
               private masterDataService : MasterDataService,
-              private donorService : DonorService,
+              private hospitalService : HospitalService,
               private router : Router,
               private modalService: NgbModal,
-              private spinner: NgxSpinnerService) {
-    this.donor = new Donor();
-    this.minDOB = Utils.toAngularStringDate(this.donor.getMinDOB());
-    this.maxDOB = Utils.toAngularStringDate(this.donor.getMaxDOB());
-    debugger;
+              private spinner: NgxSpinnerService) { 
+    this.hospital = new Hospital();
   }
 
   ngOnInit() {
@@ -50,38 +43,33 @@ export class DonorRegistrationComponent implements OnInit {
       }
     );
   }
-  
+
   signUp(){
     this.spinner.show();
+
     // validation
-    if(!this.donor.isValidRegistration()){
+    if(!this.hospital.isValidRegistration()){
       this.spinner.hide();
       this.showModalDialog("Error","Please fill all the required fileds!");
       return;
     }
 
-    if(!this.donor.checkDOBRange()){
-      this.spinner.hide();
-      this.showModalDialog("Error","Date of Birth in not in valid range!");
-      return;
-    }
-
-    if(this.donor.password != this.confirmPassword){
+    if(this.hospital.password != this.confirmPassword){
       this.spinner.hide();
       this.showModalDialog("Error","Password and Confirm Password are not matching!");
       return;
     }
 
-    this.donorService.register(this.donor).subscribe(
+    this.hospitalService.register(this.hospital).subscribe(
       (res)=>{
         debugger;
         this.spinner.hide();
-        this.showModalDialog("Success","Donor registration successful!");
+        this.showModalDialog("Success","Hospital registration successful!");
       },
       (err)=>{
         debugger;
         this.spinner.hide();
-        this.showModalDialog("Error","Donor registration unsuccessful!<br/>Error: " + err.error['message']);
+        this.showModalDialog("Error","Hospital registration unsuccessful!<br/>Error: " + err.error['message']);
       }
     );
   }

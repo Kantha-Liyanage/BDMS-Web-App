@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from  '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { NewPurchReqComponent } from './components/new-purch-req/new-purch-req.component';
 import { TokenInterceptor } from './interceptors/token-interceptor';
@@ -12,6 +13,7 @@ import { MaterialPickerComponent } from './components/material-picker/material-p
 import { ApprovePurchReqComponent } from './components/approve-purch-req/approve-purch-req.component';
 import { ViewPurchReqComponent } from './components/view-purch-req/view-purch-req.component';
 import { DonorRegistrationComponent } from './components/donor-registration/donor-registration.component';
+import { HospitalRegistrationComponent } from './components/hospital-registration/hospital-registration.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +24,16 @@ import { DonorRegistrationComponent } from './components/donor-registration/dono
     MaterialPickerComponent,
     ApprovePurchReqComponent,
     ViewPurchReqComponent,
-    DonorRegistrationComponent
+    DonorRegistrationComponent,
+    HospitalRegistrationComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     NgbModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    NgxSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
