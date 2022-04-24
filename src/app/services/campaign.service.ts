@@ -33,6 +33,26 @@ export class CampaignService {
     return this.http.post(url, json);  
   }
 
+  update(campaign: Campaign) {
+    debugger;
+    let url = this.baseURL; 
+    
+    let json = {
+      campaignID : campaign.campaignID,
+      hospitalID : campaign.hospitalID,
+      campaignName : campaign.campaignName,
+      bloodGroups : campaign.bloodGroups,
+      city : campaign.city,
+      location : campaign.location,
+      campaignDate : Utils.toDotNetDate(campaign.campaignDate),
+      timeSlots : campaign.timeSlots,
+      remarks  : campaign.remarks,
+      status : campaign.status
+    }
+
+    return this.http.patch(url, json);  
+  }
+
   getHospitalAll(hospitalID : string){
     debugger;
     let url = this.baseURL + '/HospitalOpenAll?hospitalID=' + hospitalID; 

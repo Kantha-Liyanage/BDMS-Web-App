@@ -47,8 +47,8 @@
             <div class="form-group">
                 <label for="bloodGroups" class="text-info"><br/>Blood Groups:</label>&nbsp;&nbsp;<label class="badge badge-warning">Required</label><br>
                 <div class="form-check form-check-inline badge badge-info">
-                  <input class="form-check-input" type="checkbox" value="all" id="all" (click)="selectAllbloodGroups()">
-                  <label class="form-check-label" for="all">All Blood Groups</label>
+                  <input class="form-check-input" type="checkbox" value="all" id="allBloodGroups" (click)="selectAllbloodGroups()">
+                  <label class="form-check-label" for="allBloodGroups">All Blood Groups</label>
                 </div>
                 <div *ngFor="let bg of bloodGroups" class="form-check form-check-inline badge badge-danger">
                   <input class="form-check-input" type="checkbox" value="{{bg.id}}" id="{{bg.id}}" [(ngModel)]="bg.selected">
@@ -109,10 +109,31 @@
       <div class="card-body">
 
         <!--accordion body-->
-        <label *ngFor="let camp of campaigns" class="badge badge-info">{{camp.campaignName}}</label>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col" *ngFor="let camp of campaigns">
+            <div class="card" style="width: 18rem;">
+              <img src="../../../assets/icons/calender.png" class="card-img-top" style="width: 10vw; align-self: center;">
+              <div class="card-body">
+                <h5 class="card-title">{{camp.campaignName}}</h5>
+                <p class="card-text">Capaign location is {{camp.location}}.</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{getFriendlyDate(camp.campaignDate)}}</li>
+                <li class="list-group-item">{{camp.city}}</li>
+                <li class="list-group-item">{{camp.status}}</li>
+              </ul>
+              <div class="card-body">
+                <input type="submit" name="save" class="btn btn-warning btn-sm" value="Edit Campaign" (click)="editCampaign(camp)">
+                &nbsp;&nbsp;
+                <input type="submit" name="save" class="btn btn-info btn-sm" value="View Campaign" (click)="viewCampaign(camp)">
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
-
 </div>

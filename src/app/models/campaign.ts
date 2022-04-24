@@ -10,6 +10,7 @@ export class Campaign{
     timeSlots : number = 0;
     remarks  : string = "";
     status : string = "Draft";
+    isPersistent : boolean = false;
 
     isValidCampaign(){
         if( this.campaignID == "" || 
