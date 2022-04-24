@@ -14,6 +14,9 @@ import { ApprovePurchReqComponent } from './components/approve-purch-req/approve
 import { ViewPurchReqComponent } from './components/view-purch-req/view-purch-req.component';
 import { DonorRegistrationComponent } from './components/donor-registration/donor-registration.component';
 import { HospitalRegistrationComponent } from './components/hospital-registration/hospital-registration.component';
+import { DonorProfileComponent } from './components/donor-profile/donor-profile.component';
+import { HospitalDonationCampaignComponent } from './components/hospital-donation-campaign/hospital-donation-campaign.component';
+import { DonationCampaignsCalendarComponent } from './components/donation-campaigns-calendar/donation-campaigns-calendar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { HospitalRegistrationComponent } from './components/hospital-registratio
     ApprovePurchReqComponent,
     ViewPurchReqComponent,
     DonorRegistrationComponent,
-    HospitalRegistrationComponent
+    HospitalRegistrationComponent,
+    DonorProfileComponent,
+    HospitalDonationCampaignComponent,
+    DonationCampaignsCalendarComponent
   ],
   imports: [
     BrowserModule,

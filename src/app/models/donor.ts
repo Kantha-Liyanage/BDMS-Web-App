@@ -19,6 +19,13 @@ export class Donor{
         return true;
     }
 
+    isValidProfileUpdate(){
+        if(this.firstName == "" ||  this.lastName == "" ||  this.gender == ""){
+            return false;
+        }
+        return true;
+    }
+
     checkDOBRange() : boolean{
         debugger;
         var startDate = this.getMinDOB();

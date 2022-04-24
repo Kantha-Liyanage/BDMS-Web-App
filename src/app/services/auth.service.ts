@@ -30,6 +30,10 @@ export class AuthService {
     this.setSigningUp(false);
   }
 
+  static getAccessToken() : string{
+    return localStorage.getItem("token");
+  }
+
   isLoggedIn() : boolean{
     try{
       let can = localStorage.getItem("isLoggedIn").startsWith('X');

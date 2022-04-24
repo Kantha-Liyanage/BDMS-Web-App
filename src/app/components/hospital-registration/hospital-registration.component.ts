@@ -31,6 +31,7 @@ export class HospitalRegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
+    // get cities
     this.spinner.show();
     this.masterDataService.getCities().subscribe(
       (res)=>{

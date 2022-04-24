@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class AppComponent {
 
   constructor(private router : Router,
               private authService : AuthService,
-              private modalService: NgbModal){
+              private modalService: NgbModal,
+              private spinner: NgxSpinnerService){
     debugger;          
   }
 
@@ -34,24 +36,31 @@ export class AppComponent {
   }
 
   signInDonor(){
+    this.spinner.show();
     this.authService.signIn('Donor', this.username, this.password).subscribe(
       (res)=>{
         this.authService.setLoggedOnUser('Donor', res["firstName"] + ' (' + res["nic"] + ')', res["token"]);
         this.isLoggedIn = true;
+        this.spinner.hide();
       },
       (err)=>{
+        this.spinner.hide();
         this.showModalDialog("Error", "Invalid login.");
       }
     );
   }
 
   signInHospital(){
+    this.spinner.show();
     this.authService.signIn('Hospital', this.username, this.password).subscribe(
       (res)=>{
         this.authService.setLoggedOnUser('Hospital', res["name"] + ' (' + res["hospitalID"] + ')', res["token"]);
         this.isLoggedIn = true;
+        this.spinner.hide();
+        this.router.navigate(['/donor-update']);
       },
       (err)=>{
+        this.spinner.hide();
         this.showModalDialog("Error", "Invalid login.");
       }
     );
