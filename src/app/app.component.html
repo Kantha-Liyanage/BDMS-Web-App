@@ -18,13 +18,13 @@
         
         <div class="dropdown-menu" *ngIf="getLoggedOnUserType() == 'Donor'">
           <a class="dropdown-item" routerLink="/donor-update"><img src="../assets/icons/edit-profile.png" width="30px"> Update Profile</a>
-          <a class="dropdown-item" routerLink="/approve-prs"><img src="../assets/icons/calender.png" width="30px"> Donations Calendar</a>
+          <a class="dropdown-item" routerLink="/campaigns"><img src="../assets/icons/calender.png" width="30px"> Donations Calendar</a>
           <a class="dropdown-item" (click)="signOut()" href="javascript:void()"><img src="../assets/icons/logout.svg" width="30px"> Logout</a>
         </div>
 
         <div class="dropdown-menu" *ngIf="getLoggedOnUserType() == 'Hospital'">
           <a class="dropdown-item" ><img src="../assets/hospital.png" width="30px"> Update Profile</a>
-          <a class="dropdown-item" routerLink="/campaigns"><img src="../assets/icons/calender.png" width="30px"> Campaigns Calendar</a>
+          <a class="dropdown-item" routerLink="/hospital-campaigns"><img src="../assets/icons/calender.png" width="30px"> Campaigns Calendar</a>
           <a class="dropdown-item" (click)="signOut()" href="javascript:void()"><img src="../assets/icons/logout.svg" width="30px"> Logout</a>
         </div>
       </li> 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DonationCampaignsCalendarComponent } from './components/donation-campaigns-calendar/donation-campaigns-calendar.component';
 import { DonorProfileComponent } from './components/donor-profile/donor-profile.component';
 import { DonorRegistrationComponent } from './components/donor-registration/donor-registration.component';
 import { HospitalDonationCampaignComponent } from './components/hospital-donation-campaign/hospital-donation-campaign.component';
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path: 'donor-signup', component: DonorRegistrationComponent },
   { path: 'hospital-signup', component: HospitalRegistrationComponent },
   { path: 'donor-update', component: DonorProfileComponent },
-  { path: 'campaigns', component: HospitalDonationCampaignComponent }
+  { path: 'hospital-campaigns', component: HospitalDonationCampaignComponent },
+  { path: 'campaigns', component: DonationCampaignsCalendarComponent }
 ];
 
 @NgModule({

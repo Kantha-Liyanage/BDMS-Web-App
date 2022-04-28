@@ -58,4 +58,10 @@ export class CampaignService {
     let url = this.baseURL + '/HospitalOpenAll?hospitalID=' + hospitalID; 
     return this.http.get(url); 
   }
+
+  getCityOpenAll(city : string){
+    debugger;
+    let url = this.baseURL + '/CityOpenAll?city=' + city; 
+    return this.http.get(url); 
+  }
 }

@@ -55,7 +55,7 @@ export class HospitalDonationCampaignComponent implements OnInit {
 
   getHospitalAll() {
     this.spinner.show();
-    this.campaigns.slice(0);
+    this.campaigns = [];
     this.campaignService.getHospitalAll(this.campaign.hospitalID).subscribe(
       (res)=>{
         debugger;
@@ -123,6 +123,8 @@ export class HospitalDonationCampaignComponent implements OnInit {
           debugger;
           this.spinner.hide();
           this.showModalDialog("Success","Campaign saved successful!");
+          // relead
+          this.getHospitalAll();
         },
         (err)=>{
           debugger;
@@ -138,6 +140,8 @@ export class HospitalDonationCampaignComponent implements OnInit {
           this.spinner.hide();
           this.showModalDialog("Success","Campaign saved successful!");
           this.clearAll()
+          // relead
+          this.getHospitalAll();
         },
         (err)=>{
           debugger;
@@ -146,9 +150,6 @@ export class HospitalDonationCampaignComponent implements OnInit {
         }
       );
     }
-
-    this.getHospitalAll();
-    this.ngOnInit();
   }
 
   editCampaign(camp : Campaign){
