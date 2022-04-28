@@ -6,6 +6,7 @@ import { Campaign } from 'src/app/models/campaign';
 import { CampaignService } from 'src/app/services/campaign.service';
 import { MasterDataService } from 'src/app/services/master.data.service';
 import { Utils } from 'src/app/utils/utils';
+import { CreateAppointmentComponent } from '../create-appointment/create-appointment.component';
 
 @Component({
   selector: 'app-donation-campaigns-calendar',
@@ -58,7 +59,18 @@ export class DonationCampaignsCalendarComponent implements OnInit {
   }
 
   createAppointment(campaign : Campaign){
-    alert(campaign.timeSlots);
+    let appointment = this.modalService.open(CreateAppointmentComponent, {centered: true, size: 'lg'});
+    appointment.componentInstance.campaign = campaign;
+    
+    appointment.result.then(
+      (result) => {
+        alert(result);
+      }
+    ).catch(
+      (error) => {
+        //Do nothing
+      }
+    );
   }
 
   getFriendlyDate(date : any){

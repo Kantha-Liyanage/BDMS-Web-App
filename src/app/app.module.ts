@@ -13,6 +13,8 @@ import { HospitalRegistrationComponent } from './components/hospital-registratio
 import { DonorProfileComponent } from './components/donor-profile/donor-profile.component';
 import { HospitalDonationCampaignComponent } from './components/hospital-donation-campaign/hospital-donation-campaign.component';
 import { DonationCampaignsCalendarComponent } from './components/donation-campaigns-calendar/donation-campaigns-calendar.component';
+import { CreateAppointmentComponent } from './components/create-appointment/create-appointment.component';
+import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { DonationCampaignsCalendarComponent } from './components/donation-campai
     HospitalRegistrationComponent,
     DonorProfileComponent,
     HospitalDonationCampaignComponent,
-    DonationCampaignsCalendarComponent
+    DonationCampaignsCalendarComponent,
+    CreateAppointmentComponent,
+    MyAppointmentsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import { DonationCampaignsCalendarComponent } from './components/donation-campai
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    ModalDialogComponent
+    ModalDialogComponent,
+    CreateAppointmentComponent
   ]
 })
 export class AppModule { }
