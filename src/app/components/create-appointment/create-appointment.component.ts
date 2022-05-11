@@ -32,7 +32,7 @@ export class CreateAppointmentComponent implements OnInit {
     for (let index = 0; index < this.campaign.timeSlots; index++) {
       let timeslot = new TimeSlot();
       timeslot.slotNumber = index + 1;
-      timeslot.text = "12";
+      timeslot.text = "5";
       const element = this.timeSlots.push(timeslot);
     }
   }
