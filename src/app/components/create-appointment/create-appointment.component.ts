@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Appointment } from 'src/app/models/appointment';
 import { Campaign } from 'src/app/models/campaign';
 import { TimeSlot } from 'src/app/models/timeslot';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,8 +14,13 @@ export class CreateAppointmentComponent implements OnInit {
 
   campaign : Campaign;
   timeSlots : TimeSlot[] = [];
+  appointment : Appointment;
+
   constructor(private activeModal: NgbActiveModal,
-              private authService: AuthService) { }
+              private authService: AuthService) { 
+    this.appointment = new Appointment();
+    debugger;
+  }
 
   ngOnInit() {
     this.setTimeSlots();
