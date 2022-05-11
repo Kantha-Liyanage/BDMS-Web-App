@@ -16,7 +16,7 @@ export class CreateAppointmentComponent implements OnInit {
   timeSlots : TimeSlot[] = [];
   appointment : Appointment;
 
-  constructor(private activeModal: NgbActiveModal,
+  constructor(public activeModal: NgbActiveModal,
               private authService: AuthService) { 
     this.appointment = new Appointment();
     debugger;
