@@ -12,7 +12,7 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   
-  title : string = "Blood Donation Management System";
+  title : string = "~ Blood Donation Management System ~";
   username : string = "";
   password : string = "";
 
